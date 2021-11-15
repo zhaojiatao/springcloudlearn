@@ -1,0 +1,45 @@
+server:
+  port: 8100
+# 指定服务名称
+spring:
+  application:
+    name: eureka-server
+  # spring security basic认证账户，须全局配置一致
+  security:
+    user:
+      name: sys_admin
+      password: sys_123456
+
+# eureka server可以通过http://${eureka.instance.hostname}:${server.port}/eureka进行访问
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    # 在这个时间内若没收到服务的下一次心跳，则将移除该instance
+    lease-expiration-duration-in-seconds: 2
+    # eureka 元数据，主要用于springboot admin服务端通过eureke注册表获取后连接并调取客户端监控数据
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  server:
+    enable-self-preservation: false
+    # server清理无效节点的时间间隔，默认60000毫秒，即60秒
+    eviction-interval-timer-in-ms: 2000
+# 通过eureka.client.registerWithEureka:false和fetchRegistry:false来表明自己是一个eureka server
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8100/eureka/
+
+# 请求超时配置
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000
+  ConnectTimeout: 5000
+  # 对当前实例的重试次数，默认0
+  MaxAutoRetries: 0
+  # 对切换实例的重试次数，默认1
+  MaxAutoRetriesNextServer: 1
+  # 对所有操作请求都进行重试,默认false
+  OkToRetryOnAllOperations: false
