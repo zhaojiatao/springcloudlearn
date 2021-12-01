@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>zjt.learn</groupId>
+    <artifactId>springcloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>api</module>
+        <module>common</module>
+        <module>web</module>
+        <module>core</module>
+        <module>eureka</module>
+    </modules>
+
+
+    <properties>
+        <!-- spring boot总版本配置 -->
+        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <!-- spring cloud总版本配置 -->
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <spring-cloud-starter-function-webflux.version>2.0.0.RELEASE</spring-cloud-starter-function-webflux.version>
+
+        <spring-statemachine.version>2.0.2.RELEASE</spring-statemachine.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <guava.version>27.1-jre</guava.version>
+        <lombok.version>1.18.20</lombok.version>
+        <fastjson.version>1.2.76</fastjson.version>
+        <swagger.version>1.5.13</swagger.version>
+
+        <!-- commons包版本配置 -->
+
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-io-version>2.5</commons-io-version>
+        <commons-codec-version>1.11</commons-codec-version>
+        <commons-pool2.version>2.6.0</commons-pool2.version>
+
+        <!-- jackson包版本配置 -->
+        <jackson.version>2.9.0</jackson.version>
+        <jackson-dataformat-smile.version>2.9.5</jackson-dataformat-smile.version>
+        <jackson-dataformat-yaml.version>2.9.5</jackson-dataformat-yaml.version>
+        <jackson-dataformat-cbor.version>2.9.5</jackson-dataformat-cbor.version>
+        <jackson-datatype-jdk8.version>2.9.5</jackson-datatype-jdk8.version>
+        <jackson-datatype-jsr310.version>2.9.5</jackson-datatype-jsr310.version>
+        <jackson-module-parameter-names.version>2.9.5</jackson-module-parameter-names.version>
+        <!-- 其他json包版本配置 -->
+        <fastjson.version>1.2.61</fastjson.version>
+        <gson.version>2.8.1</gson.version>
+        <json-lib.version>2.3</json-lib.version>
+
+        <!-- maven相关依赖 -->
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
+        <maven-pmd-plugin.version>3.7</maven-pmd-plugin.version>
+        <maven-jxr-plugin.version>2.2</maven-jxr-plugin.version>
+        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <maven-javadoc-plugin.version>2.10.2</maven-javadoc-plugin.version>
+        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
+        <maven-pmd-plugin.version>3.7</maven-pmd-plugin.version>
+        <maven-checkstyle-plugin.version>2.5</maven-checkstyle-plugin.version>
+        <maven-jxr-plugin.version>2.2</maven-jxr-plugin.version>
+        <maven-site-plugin.version>3.7</maven-site-plugin.version>
+
+        <!--java servlet相关对象包版本配置-->
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <!-- 日志相关版本配置 -->
+        <log4j.version>1.2.17</log4j.version>
+        <!-- slf4j -->
+        <slf4j.version>1.7.25</slf4j.version>
+        <apollo.version>1.8.0</apollo.version>
+
+        <crm-commons.version>1.0.0-SNAPSHOT</crm-commons.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!--spring statemachine-->
+            <dependency>
+                <groupId>org.springframework.statemachine</groupId>
+                <artifactId>spring-statemachine-bom</artifactId>
+                <version>${spring-statemachine.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- io类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <!-- apollo -->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!-- 编码和编译和JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+
+
+
+</project>
