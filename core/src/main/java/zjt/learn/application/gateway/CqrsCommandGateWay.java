@@ -16,9 +16,7 @@ import zjt.learn.model.base.Response;
  * @Author: zhaojiatao
  * @Date: 2021/10/24 21:09
  * @ClassName: CqrsCommandGateWay
- * Company: ichint.com Inc.
  * @Version: 1.0.0
- * Copyright: Copyright (c) 1984-2021 All Rights Reserved.
  */
 @RestController
 @Slf4j
