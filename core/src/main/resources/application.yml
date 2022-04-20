@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: core-service
+  # spring security basic认证账户，须全局配置一致
+  security:
+    user:
+      name: ${SECURITY_USER_NAME:root}
+      password: ${SECURITY_PASSWORD:root}
+
+# eureka security
+eureka:
+  client:
+    # client间隔多久去拉取服务注册信息，默认为30秒
+    registry-fetch-interval-seconds: 20
+    # eureka-server地址
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka01:8101/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka02:8102/eureka/
+  instance:
+    prefer-ip-address: true
+    # eureka 界面显示的服务名称格式
+    # 2.x版本的springcloud 引入此包就能使用spring.cloud.client.ip-address变量
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    # 表示eureka client发送心跳给server端的频率
+    lease-renewal-interval-in-seconds: 1
+
+

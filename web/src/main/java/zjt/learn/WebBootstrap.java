@@ -14,7 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @Date: 2021/11/5 13:26
  * @ClassName: WebBootstrap
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages="zjt.learn")
 @EnableFeignClients
 public class WebBootstrap extends SpringBootServletInitializer {
     @Override

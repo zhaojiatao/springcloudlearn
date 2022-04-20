@@ -18,10 +18,13 @@
 
 
     <properties>
+        <!--springboot和springcloud版本号必须对应 https://blog.csdn.net/m0_37824308/article/details/122717359-->
         <!-- spring boot总版本配置 -->
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
         <!-- spring cloud总版本配置 -->
-        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+
+
         <spring-cloud-starter-function-webflux.version>2.0.0.RELEASE</spring-cloud-starter-function-webflux.version>
 
         <spring-statemachine.version>2.0.2.RELEASE</spring-statemachine.version>
@@ -77,7 +80,6 @@
         <slf4j.version>1.7.25</slf4j.version>
         <apollo.version>1.8.0</apollo.version>
 
-        <crm-commons.version>1.0.0-SNAPSHOT</crm-commons.version>
     </properties>
 
 
