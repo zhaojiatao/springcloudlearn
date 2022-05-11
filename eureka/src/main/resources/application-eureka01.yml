@@ -17,7 +17,7 @@ spring:
 eureka:
   instance:
     hostname: eureka01
-#    prefer-ip-address: true
+#    prefer-ip-address: true # 如果使用的是hostname注册，要设置为false，否则注册不成功
     # 在这个时间内若没收到服务的下一次心跳，则将移除该instance 服务失效时间，默认值90秒
     lease-expiration-duration-in-seconds: 60
     # eureka 元数据，主要用于springboot admin服务端通过eureke注册表获取后连接并调取客户端监控数据
