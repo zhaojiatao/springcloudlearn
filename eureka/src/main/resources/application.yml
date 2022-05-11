@@ -1,5 +1,5 @@
 server:
-  port: 8102
+  port: 8100
 # 指定服务名称
 spring:
   application:
@@ -9,17 +9,14 @@ spring:
     user:
       name: root
       password: root
-  # 默认启用本地开发环境，可通过新增启动脚本中jvm参数"-Dspring.profiles.active=test"参数指定
-  profiles:
-    active: eureka02
 # 通过eureka.client.registerWithEureka:false和fetchRegistry:false来表明自己是一个eureka server
 # eureka server可以通过http://${eureka.instance.hostname}:${server.port}/eureka进行访问
 eureka:
   instance:
-    hostname: eureka02
-#    prefer-ip-address: true
+    hostname: localhost
+    prefer-ip-address: true
     # 在这个时间内若没收到服务的下一次心跳，则将移除该instance
-    lease-expiration-duration-in-seconds: 60
+    lease-expiration-duration-in-seconds: 2
     # eureka 元数据，主要用于springboot admin服务端通过eureke注册表获取后连接并调取客户端监控数据
     metadata-map:
       user.name: ${spring.security.user.name}
@@ -27,14 +24,22 @@ eureka:
   server:
     enable-self-preservation: false
     # server清理无效节点的时间间隔，默认60000毫秒，即60秒
-    eviction-interval-timer-in-ms: 50000
+    eviction-interval-timer-in-ms: 2000
+# 通过eureka.client.registerWithEureka:false和fetchRegistry:false来表明自己是一个eureka server
   client:
-    #是否将自己注册到Eureka Server,默认为true，由于当前就是server，故而设置成false，表明该服务不会向eureka注册自己的信息
-    register-with-eureka: true
-    #是否从eureka server获取注册信息，由于单节点，不需要同步其他节点数据，用false
-    fetch-registry: true
-    #设置服务注册中心的URL，用于client和server端交流
+    register-with-eureka: false
+    fetch-registry: false
     serviceUrl:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka01:8101/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8100/eureka/
 
-
+# 请求超时配置
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000
+  ConnectTimeout: 5000
+  # 对当前实例的重试次数，默认0
+  MaxAutoRetries: 0
+  # 对切换实例的重试次数，默认1
+  MaxAutoRetriesNextServer: 1
+  # 对所有操作请求都进行重试,默认false
+  OkToRetryOnAllOperations: false

@@ -20,7 +20,7 @@ eureka:
     registry-fetch-interval-seconds: 20
     # eureka-server地址
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka01:8101/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka02:8102/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8100/eureka/
   instance:
     prefer-ip-address: true
     # eureka 界面显示的服务名称格式
