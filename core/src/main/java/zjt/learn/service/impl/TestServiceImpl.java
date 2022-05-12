@@ -11,6 +11,7 @@ import zjt.learn.dto.MakeOrderDTO;
 import zjt.learn.service.IdGenerateAdapter;
 
 import javax.annotation.Resource;
+import java.util.Objects;
 
 /**
  * 功能：
@@ -30,6 +31,10 @@ public class TestServiceImpl implements ITestService {
     @Resource
     private IOrderDAO orderDAO;
 
+    public static String buildName(String str){
+        return str+"CC";
+    }
+
 
     @Override
     public String query(@RequestParam(value = "id") String id) {
@@ -39,7 +44,9 @@ public class TestServiceImpl implements ITestService {
 
     @Override
     public Long makeOrder(MakeOrderDTO makeOrderDTO) {
-
+        if(Objects.isNull(makeOrderDTO)){
+            throw new RuntimeException("不可为空");
+        }
         Long id = idGenerateAdapter.generate();
 
         makeOrderDTO.setId(id);
