@@ -19,8 +19,16 @@ import java.util.UUID;
 @Repository
 public class OrderDAOImpl implements IOrderDAO {
     @Override
-    public Long save(MakeOrderDTO makeOrderDTO) {
+    public void save(MakeOrderDTO makeOrderDTO) {
         log.info("makeOrderDTO 存入数据库", JSON.toJSONString(makeOrderDTO));
-        return UUID.randomUUID().getMostSignificantBits();
+    }
+
+    @Override
+    public MakeOrderDTO loadFromDB(Long id) {
+        return MakeOrderDTO.builder()
+                .id(id)
+                .orderNo("SO"+UUID.randomUUID().toString())
+                .userName("zjt"+id)
+                .build();
     }
 }

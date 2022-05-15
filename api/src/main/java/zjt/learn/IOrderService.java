@@ -8,12 +8,12 @@ import zjt.learn.dto.MakeOrderDTO;
  *
  */
 @FeignClient("core-service")
-@RequestMapping("/testService")
-public interface ITestService {
+@RequestMapping("/orderService")
+public interface IOrderService {
 
     @GetMapping(value = "/queryById")
-    String query(@RequestParam(value = "id") String id);
+    MakeOrderDTO query(@RequestParam(value = "id") Long id);
 
     @PostMapping(value = "makeOrder")
-    Long makeOrder(MakeOrderDTO makeOrderDTO);
+    MakeOrderDTO makeOrder(MakeOrderDTO makeOrderDTO);
 }

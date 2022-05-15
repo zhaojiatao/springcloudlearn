@@ -1,7 +1,9 @@
 package zjt.learn.dto;
 
-import com.sun.istack.internal.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -13,6 +15,9 @@ import java.math.BigDecimal;
  * @Date: 2022/5/12 9:47
  * @ClassName: MakeOrderDTO
  */
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 public class MakeOrderDTO implements Serializable {
     private static final long serialVersionUID = 1314078847059335812L;
@@ -31,6 +36,11 @@ public class MakeOrderDTO implements Serializable {
      * 用户名
      */
     private String userName;
+
+    /**
+     * 用户真实姓名
+     */
+    private String userRealName;
 
 
     /**

@@ -12,6 +12,9 @@ import zjt.learn.dto.MakeOrderDTO;
 public interface IOrderDAO {
 
 
-    Long save(MakeOrderDTO makeOrderDTO);
+    void save(MakeOrderDTO makeOrderDTO);
+
+
+    MakeOrderDTO loadFromDB(Long id);
 
 }
