@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zjt.learn.ITestService;
+import zjt.learn.IOrderService;
+import zjt.learn.dto.MakeOrderDTO;
 
 /**
  * 功能：
@@ -18,7 +19,7 @@ import zjt.learn.ITestService;
 @RequestMapping("/query")
 public class TestController {
     @Autowired
-    private ITestService queryService;
+    private IOrderService orderService;
 
     /**
      * 查询订单详情
@@ -27,8 +28,8 @@ public class TestController {
      * @return
      */
     @GetMapping(value = "/orderdetail/{id}")
-    public String orderDetail(@PathVariable(value = "id") String id){
-        return queryService.query(id);
+    public MakeOrderDTO orderDetail(@PathVariable(value = "id") Long id){
+        return orderService.query(id);
     }
 
 
