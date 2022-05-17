@@ -27,7 +27,7 @@ public class AssertMatcherTest {
 
         double price=23.45;
         assertThat(price,either(equalTo(23.45)).or(equalTo(23.54)));
-        assertThat(price,both(equalTo(23.45)).and(equalTo(23.54)));
+        assertThat(price,both(equalTo(23.45)).and(not(equalTo(23.54))));
 
     }
 
